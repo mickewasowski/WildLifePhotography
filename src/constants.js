@@ -1,0 +1,2 @@
+exports.JWT_TOKEN_NAME = "auth_jwt";
+exports.JWT_SECRET = "68BDADBF78AADAF96C1F36CFFEB48";
