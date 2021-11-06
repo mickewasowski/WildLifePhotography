@@ -46,8 +46,8 @@ userSchema.static('findByEmail', function(email){
     return this.findOne({email});
 });
 
-userSchema.method('validatePassword', function(pass){
-    return bcrypt.compare(pass, this.password);
+userSchema.method('validatePassword', async function(pass){
+    return await bcrypt.compare(pass, this.password);
 });
 
 

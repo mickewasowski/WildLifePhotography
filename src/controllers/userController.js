@@ -28,7 +28,6 @@ const postRegister = async (req,res) => {
         res.redirect('/');
 
     } catch (error) {
-        console.log(error);
         //let message = errorHandlerUponCreateOrUpdate(error);
 
         res.status(400).render('user/register', { error: error.message });
@@ -57,8 +56,6 @@ const postLogin = async (req, res) => {
         res.redirect('/');
 
     }catch (error) {
-        console.log(error);
-
         res.status(400).render('user/login', { error: error.message });
     }
 

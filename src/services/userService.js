@@ -17,31 +17,31 @@ exports.register =  function (firstName, lastName, email, password, repeatPasswo
 exports.login = async function(email, password){
 
     //if the password is only numeric the bcrypt compare method doesnt function properly
-    // return await User.findByEmail(email)
-    // .then(user => {
-    //     if (user != null) {
-    //         return Promise.all([user.validatePassword(password), user]);
-    //     }
-    //     else{
-    //         throw new Error('No such user was found!');
-    //     }
-    // })
-    // .then(([isPassValid, user])=> {
-    //     console.log(isPassValid);
-    //     if(isPassValid){
-    //         return user;
-    //     }else{
-    //         throw new Error('Username or password are invalid!');
-    //     }
-    // })
-    // .catch(err => {
-    //     throw err;
-    // });
+    return await User.findByEmail(email)
+    .then(user => {
+        if (user != null) {
+            return Promise.all([user.validatePassword(password), user]);
+        }
+        else{
+            throw new Error('No such user was found!');
+        }
+    })
+    .then(([isPassValid, user])=> {
+        console.log(isPassValid);
+        if(isPassValid){
+            return user;
+        }else{
+            throw new Error('Username or password are invalid!');
+        }
+    })
+    .catch(err => {
+        throw err;
+    });
 
-    let user = await User.findByEmail(email);
-    let isPassValid = await user.validatePassword(password);
+    // let user = await User.findByEmail(email);
+    // let isPassValid = await user.validatePassword(password);
 
-    console.log(isPassValid);
+    // console.log(isPassValid);
 
 };
 
